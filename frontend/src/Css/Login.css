@@ -31,12 +31,18 @@
     top:30%;
     background-color: white;
 }
-#logo_img{
+#logo_img1{
     position: absolute;
     z-index: 1;
-    left: 43%;
+    left: 44%;
     top:10%;
     color: rgb(225, 228, 231);
+}
+
+@media only screen and (max-width: 1287px){
+    #logo_img1{
+        left: 43%;
+    }
 }
 #extra_div{
     width:90%;
@@ -113,7 +119,14 @@ text-align: left;
     color: white;
     background-color: #2e65c2;
 }
-
+.err{
+    color:rgb(243, 76, 76); 
+    text-align: left;
+}
+#invalid{
+    color:rgb(243, 76, 76) ;
+    display: none;
+}
 
 @media only screen and (max-width: 600px) {
     #login_page{
@@ -122,14 +135,14 @@ text-align: left;
     #login_div{
         width: 100%;
     }
-    #logo_img{
+    #logo_img1{
         left: 25%;
         top:16%;
     }
-    #logo_img img{
+    #logo_img1 img{
         width: 60%;
     }
-    #logo_img p{
+    #logo_img1 p{
         font-size: 17px;
     }
     #login{

@@ -1,0 +1,137 @@
+#Dashboard_container{
+    display: flex;
+    width: 100%;
+    height: 900px;
+    background-color: rgb(239, 244, 248);
+}
+#child1{
+    height: 100%;
+    width: 4%;
+    align-items: center;
+    background-color: white;
+}
+#child1_child1{
+    width: 100%;
+    height: 25%;
+    margin: auto;
+    margin-top: 260px;
+}
+#child1_child2{
+    width: 100%;
+    height: 10%;
+    margin: auto;
+    margin-top: 200px;
+}
+.child1_child1_div{
+    width: 100%;
+    height: 33%;
+    
+}
+.child1_child1_div img,#child1_child2 img{
+    width: 50%;
+    margin: auto;
+    margin-top: 50%;
+    
+}
+/* .child1_child1_div:nth-child(2){
+    border-bottom: 1px solid gray;
+} */
+
+
+#child2{
+    height: 100%;
+    width: 96%;
+    
+}
+#header_container{
+    width: 100%;
+}
+#header_img{
+    width: 100%;
+}
+#header_p{
+    font-size: 25px;
+    font-weight: 600;
+    position: absolute;
+    z-index: 1;
+    top: 3%;
+    left: 7%;
+    color: white;
+}
+#logo_img{
+    width: 65px;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top:5%;
+    color: rgb(225, 228, 231);
+}
+#logo_img img{
+    width: 100%;
+}
+#dhashboard_info{
+    display: flex;
+    justify-content: space-evenly;
+    width: 95.6%;
+    position: absolute;
+    z-index: 1;
+    top:18%;
+    background-color: none;
+    
+}
+.dhashboard_info_child{
+    height: 95px;
+    width: 18%;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+}
+.dhashboard_info_one{
+    width:2%;
+    height:100%;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #2ccce4;
+}
+.dhashboard_info_two{
+    width:98%;
+    height:100%;
+    border-radius: 0px 10px 10px 0px;
+    text-align: left;
+}
+.title{
+    margin-top: 5px;
+    margin-left: 13px;
+    color: rgb(109, 106, 106);
+    border-radius: 0px 10px 0px 0px;
+    font-weight: 500;
+}
+.num{
+    margin-top: -15px;
+    margin-left: 13px;
+    font-size: 50px;
+    font-weight: 500;
+    color: rgb(108, 106, 106);
+    border-radius: 0px 0px 10px 0px;
+}
+#totalvsclosed{
+    margin-top: 80px;
+    text-align: left;
+    margin-left: 25px;
+    font-size: 22px;
+    font-weight: 499;
+}
+@media only screen and (max-width: 1287px){
+    #totalvsclosed{
+        margin-top: 115px;
+    }
+}
+#chart{
+    width: 48%;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin: auto;
+    margin-left: 25px;
+    height: 395px;
+    background-color: white;
+}

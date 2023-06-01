@@ -1,0 +1,35 @@
+#create_project{
+    width: 83%;
+    background-color: white;
+    height: 850px;
+    position: absolute;
+    z-index: 1;
+ 
+    top:16%;
+    left: 10%;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+#create_project_project{
+    width: 100%;
+    background-color: black;
+    height: 1000px;
+}
+
+#create_project_project_container{
+
+    width: 90%;
+    margin: auto;
+    height: 1000px;
+    background-color: rgb(239, 244, 248);
+
+}
+#headercreateP_p{
+    font-size: 20px;
+    font-weight: 600;
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    left: 10%;
+    color: white;
+}
