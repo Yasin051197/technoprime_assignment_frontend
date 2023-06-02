@@ -43,7 +43,6 @@ const Login = () => {
          else{
           setPasserr(false)
          }
-        console.log(user)
         if(user.email!=="" && user.password!==""){
           let res=await axios.post("http://localhost:8080/login",user)
           console.log(res.data)
