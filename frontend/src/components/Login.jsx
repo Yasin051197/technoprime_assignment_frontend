@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "../Css/Login.css"
 import show from "../Assets/hide-password.svg"
 import login_bg_1 from "../Assets/login-bg-1.svg"
@@ -6,6 +6,7 @@ import logo from "../Assets/Logo.svg"
 import logo2 from "../Assets/smallScreen.png"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { Authcontext } from '../contexts/AuthContext'
 
 
 
@@ -20,6 +21,7 @@ const Login = () => {
   const [emailerr,setEmailerr]=useState(false);
   const [passerr,setPasserr]=useState(false);
   const [invalid,setinvalid]=useState(false)
+  const {islogin,login,logout}=useContext(Authcontext)
   const navigate=useNavigate()
 
   
@@ -47,12 +49,13 @@ const Login = () => {
           let res=await axios.post("http://localhost:8080/login",user)
           console.log(res.data)
           if(res.data.msg==="Invalid User")
-          {setinvalid(true)
-       
+          {
+            setinvalid(true)
           }
           else if(res.data.msg==="Valid User"){
             setinvalid(false)
-         
+            login(res.data.msg)
+            localStorage.setItem("msg",res.data.msg)
             setTimeout(()=>navigate("/dashboard"),1000)
           }
         }

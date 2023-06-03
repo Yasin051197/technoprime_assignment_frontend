@@ -11,27 +11,56 @@ const ProjectList = () => {
     const pathname=window.location.pathname
     const [can,setCan]=useState(false)
     const [data,setData]=useState([])
+    const [sdata,setSdata]=useState("")
 
     useEffect(()=>{
       getData().then((res)=>setData(res.data))
     },[])
+    const handlesort=(e)=>{
+      let s=e.target.value
+      console.log(s)
+      if(s==="priority"){
+        let high=data.filter((el)=>{
+          return el.priority="high"
+        })
+        let medium=data.filter((el)=>{
+          return el.priority="medium"
+        })
+        let low=data.filter((el)=>{
+          return el.priority="low"
+        })
+        setData([...high,...medium,...low])
+      }
+    }
+
+
     const handlefiltercancle=(e)=>{
       setCan(true)
+      let a=e.target.value
+      const filteredarr=data.filter(obj=>{
+        return Object.values(obj).some(value=>{
+          if(typeof value==="string"){
+            return value.includes(a)
+          }
+          return false
+        })
+      })
+      setData(filteredarr)
     }
     const handlecancle=()=>{
       setCan(false)
       document.getElementById("filter_input").value=""
     }
     const handleStart=async(id)=>{
-      console.log(id)
+      
       return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Running"}).then(()=>getData().then((res)=>setData(res.data)))
     }
     const handleClose=async(id)=>{
-      console.log(id)
+      
       return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Closed"}).then(()=>getData().then((res)=>setData(res.data)))
     }
     const handleCancle=async(id)=>{
-      console.log(id)
+      
       return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Cancelled"}).then(()=>getData().then((res)=>setData(res.data)))
     }
   return (
@@ -50,13 +79,13 @@ const ProjectList = () => {
                 </div>
                 <div id="sort_div">
                   <p>Sort By : </p>
-                  <select name="sort" id="sort">
+                  <select onChange={handlesort} name="sort" id="sort">
                   <option value="">Sort</option>
-                  <option value="Priority">Priority</option>
-                  <option value="Recently Modified">Recently Modified</option>
-                  <option value="Status">Status</option>
-                  <option value="Start Date">State Date</option>
-                  <option value="End Date">End Date</option>
+                  <option value="priority">Priority</option>
+                  {/* <option value="Recently Modified">Recently Modified</option> */}
+                  <option value="status">Status</option>
+                  <option value="start_date">State Date</option>
+                  <option value="end_date">End Date</option>
                   </select>
                 </div>
               </div>

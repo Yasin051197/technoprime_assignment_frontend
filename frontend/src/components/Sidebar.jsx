@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "../Css/Dashboard.css"
 import active from "../Assets/Dashboard-active.svg"
 import unactive from "../Assets/Dashboard.svg"
@@ -8,10 +8,12 @@ import active_create_project from "../Assets/create-project-active.svg"
 import unactive_create_project from "../Assets/create-project.svg"
 import logout_logo from "../Assets/Logout.svg"
 import { useNavigate } from 'react-router-dom'
+import { Authcontext } from '../contexts/AuthContext'
 
 
 const Sidebar = ({pathname}) => {
     const navigate=useNavigate()
+    const {logout}=useContext(Authcontext)
     const redirectdashboard=()=>{
         setTimeout(()=>navigate("/dashboard"),500)
     }
@@ -22,6 +24,7 @@ const Sidebar = ({pathname}) => {
         setTimeout(()=>navigate("/createproject"),500)
     }
     const redirectlogout=()=>{
+        logout()
         setTimeout(()=>navigate("/"),500)
     }
   return (

@@ -4,6 +4,7 @@ import Login from '../components/Login';
 import Dashboard from '../components/Dashboard';
 import ProjectList from '../components/ProjectList';
 import CreateProject from '../components/CreateProject';
+import PrivateRouter from '../components/PrivateRouter';
 
 const Routers = () => {
   return (
@@ -11,9 +12,9 @@ const Routers = () => {
         <BrowserRouter>
         <Routes>
            <Route path="/" element={<Login />} />
-           <Route path="/dashboard" element={<Dashboard />}/>
-           <Route path="/projectlist" element={<ProjectList />}/>
-           <Route path="/createproject" element={<CreateProject />}/>
+           <Route path="/dashboard" element={<PrivateRouter><Dashboard /></PrivateRouter>}/>
+           <Route path="/projectlist" element={<PrivateRouter><ProjectList /></PrivateRouter>}/>
+           <Route path="/createproject" element={<PrivateRouter><CreateProject /></PrivateRouter>}/>
         </Routes>
         </BrowserRouter>
     </div>
