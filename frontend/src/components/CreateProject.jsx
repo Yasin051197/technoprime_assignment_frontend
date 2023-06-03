@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import "../Css/Createproject.css"
 import HeaderCreateP from './HeaderCreateP'
@@ -28,9 +28,19 @@ const CreateProject = () => {
   const [priority,setPriority]=useState(false)
   const [department,setDepartment]=useState(false)
   const [location,setLocation]=useState(false)
-  const [datecheck,setDatecheck]=useState(false)
   const [checkdate,setCheckdate]=useState("")
+  const [checksdate,setChecksdate]=useState("")
     const pathname=window.location.pathname;
+
+
+    useEffect(()=>{
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth() + 1;
+      const day = today.getDate();
+      const todayDate = `${year}-${month < 10 ? '0' : ''}${month}-${day < 10 ? '0' : ''}${day}`;
+      setChecksdate(todayDate)
+    },[checksdate])
     const handleChnage=(e)=>{
       const {name,value}=e.target;
       setProject({...project,[name]:value});
@@ -106,19 +116,11 @@ const CreateProject = () => {
         setLocation(false)
       }
       if(project.theme!=="" && project.reason!=="" && project.type!=="" && project.division!=="" && project.category!=="" && project.start_date!=="" && project.end_date!=="" && project.priority!=="" && project.department!=="" && project.location!==""){
-        // let startarray=project.start_date.split("-").map(Number)
-        // let endarray=project.end_date.split("-").map(Number)
-        // console.log(startarray,endarray)
-        // if(startarray[0]<endarray[0] || startarray[1]<endarray[1])
-        // {
-        //   setDatecheck(true)
-        // }else{
-        //   setDatecheck(false)
           let res=await axios.post("http://localhost:8080/createproject",project)
           alert(res.data.msg)
-        
       }
     }
+      
   return (
     <div id="create_project_project">
         <div id="create_project_project_container">  
@@ -203,14 +205,13 @@ const CreateProject = () => {
                 </div>
                 <div className='label'>
                      <p >Start Date as per the Project Plan</p>
-                     <input className='lable_input' onChange={handleChnage} type="date" name="start_date" />
+                     <input className='lable_input' onChange={handleChnage} type="date" name="start_date" min={checksdate} />
                      {sdate?<p className='input_error'>Project Start Date required</p>:<></>}
                 </div>
                 <div className='label'>
                      <p >End Date as per the Project Plan</p>
                      <input className='lable_input'onChange={handleChnage} type="date" name="end_date" min={checkdate} />
                      {edate?<p className='input_error'>Project End Date required</p>:<></>}
-                     {datecheck?<p className='input_error'>End Date should be greater than Start date</p>:<></>}
                 </div>
                 <div className='label'>
                      <p >Location</p>
