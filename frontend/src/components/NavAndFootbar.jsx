@@ -3,15 +3,14 @@ import "../Css/NavAndFootbar.css"
 import header from "../Assets/Header-bg.svg"
 import logout_logo from "../Assets/Logout.svg"
 import { Authcontext } from '../contexts/AuthContext'
-import Footer from './Footer'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const NavAndFootbar = () => {
-  // const navigate=useNavigate()
+  const navigate=useNavigate()
   const {logout}=useContext(Authcontext)
   const redirectlogout=()=>{
     logout()
-    // setTimeout(()=>navigate("/"),500)
+    setTimeout(()=>navigate("/"),500)
 }
   return (
     <div id="NavAndFootbar">

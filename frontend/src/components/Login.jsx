@@ -73,7 +73,7 @@ const Login = () => {
        </div>
        <div id="logo_img1">
         <img src={logo} alt={logo} />
-        <p>Online Project Management</p>
+        <p >Online Project Management</p>
        </div>
        <div id="login">
        <form onSubmit={handlesubmit}>

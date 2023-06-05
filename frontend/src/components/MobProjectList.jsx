@@ -1,16 +1,15 @@
 import React from 'react'
 import NavAndFootbar from './NavAndFootbar'
 import Footer from './Footer'
-import "../Css/MobprojectList.css"
+import "../Css/MobProjectList.css"
 
 const MobProjectList = () => {
   return (
     <div>
-        <NavAndFootbar />
-        <div id="MobProjectL">
-
+        <div className="MobPL">
+          <div id="MobPL_child1"></div>
+          <div id="MobPL_child2"></div>
         </div>
-        <Footer />
     </div>
   )
 }

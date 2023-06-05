@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "../Css/NavAndFootbar.css"
 import active from "../Assets/Dashboard-active.svg"
 import unactive from "../Assets/Dashboard.svg"
@@ -6,20 +6,23 @@ import active_project_list from "../Assets/Project-list-active.svg"
 import unactive_project_list from "../Assets/Project-list.svg"
 import active_create_project from "../Assets/create-project-active.svg"
 import unactive_create_project from "../Assets/create-project.svg"
+import { useNavigate } from 'react-router-dom'
+import { Authcontext } from '../contexts/AuthContext'
 
 
 const Footer = () => {
-   
-    const redirectdashboard=()=>{
+  const navigate=useNavigate()
+  const redirectdashboard=()=>{
+      setTimeout(()=>navigate("/dashboard"),500)
+  }
+  const redirectprojectlist=()=>{
+      setTimeout(()=>navigate("/projectlist"),500)
+  }
+  const redirectcreateproject=()=>{
+      setTimeout(()=>navigate("/createproject"),500)
+  }
+  const pathname=window.location.pathname;
 
-    }
-    const redirectprojectlist=()=>{
-
-    }
-    const redirectcreateproject=()=>{
-
-    }
-    let pathname="/dashboard"
   return (
     <div id="footer">
         <div id="footer_child">
