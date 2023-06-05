@@ -251,7 +251,9 @@ const CreateProject = () => {
     </div>
     </div>
     </div>
+    <div id="create_p_mob">
     <MobCeateProject />
+    </div>
     </>
   )
 }

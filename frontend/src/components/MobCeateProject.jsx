@@ -4,7 +4,7 @@ import Footer from './Footer'
 import "../Css/MobCreateProject.css"
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const MobCeateProject = () => {
     const initial={
@@ -32,7 +32,7 @@ const MobCeateProject = () => {
       const [location,setLocation]=useState(false)
       const [checkdate,setCheckdate]=useState("")
       const [checksdate,setChecksdate]=useState("")
-    //   const navigate=useNavigate()
+      const navigate=useNavigate()
         const pathname=window.location.pathname;
     
     

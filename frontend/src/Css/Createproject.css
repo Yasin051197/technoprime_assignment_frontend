@@ -10,13 +10,24 @@
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+#create_p_mob{
+    display: none;
+}
+
 #create_project_project{
     width: 100%;
     background-color: black;
     height: 1150px;
     display: block;
 }
-
+@media only screen and (max-width: 600px) {
+    #create_p_mob{
+        display: block;
+    }
+    #create_project_project{
+        display: none;
+    }
+}
 #create_project_project_container{
 
     width: 90%;
