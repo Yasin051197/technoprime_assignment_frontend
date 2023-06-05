@@ -136,16 +136,16 @@ const MobCeateProject = () => {
           }
         }
   return (
-    <div>
+    <div style={{backgroundColor:" rgb(239, 244, 248)"}}>
         <NavAndFootbar />
-        <div id="Mobcreatep">
+        <div style={{backgroundColor:"white"}} id="Mobcreatep">
                 <div id="Mobcreatep_child1">
-                  <input name="theme" type="text" placeholder='Enter Project Theme' onChange={handleChnage} />
+                  <input  name="theme" type="text" placeholder='Enter Project Theme' onChange={handleChnage} />
                   {theme?<p className='input_error'>Project theme required</p>:<></>}
                 </div>  
-                <div className='Mobcreatep_child2'>
+                <div  className='Mobcreatep_child2'>
                      <p >Reason</p>
-                     <select name="reason" onChange={handleChnage} >
+                     <select  name="reason" onChange={handleChnage} >
                       <option value="">Reason</option>
                       <option value="Buisness">For Buisness</option>
                       <option value="Dealership">For Dealership</option>

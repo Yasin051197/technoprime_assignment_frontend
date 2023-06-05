@@ -7,7 +7,6 @@ import unactive_project_list from "../Assets/Project-list.svg"
 import active_create_project from "../Assets/create-project-active.svg"
 import unactive_create_project from "../Assets/create-project.svg"
 import { useNavigate } from 'react-router-dom'
-import { Authcontext } from '../contexts/AuthContext'
 
 
 const Footer = () => {

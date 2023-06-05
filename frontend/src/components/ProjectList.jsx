@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import HeaderProjectL from './HeaderProjectL'
 import axios from 'axios'
+import MobProjectList from './MobProjectList'
 
 const getData=async(page)=>{
   return await axios.get(`http://localhost:8080/projects?limit=10&page=${page}`)
@@ -102,7 +103,8 @@ const ProjectList = () => {
       setPage((prev)=>prev+1)
     }
   return (
-    <div id="project_list">
+    <>
+        <div id="project_list">
         <div id="project_list_container">  
         <div id="Dashboard_container">
           <Sidebar pathname={pathname} />
@@ -170,9 +172,11 @@ const ProjectList = () => {
         </div>
         </div>
     </div>
+    <div id="Mob_project_list">
+      <MobProjectList />
+    </div>
+    </>
   )
 }
 
 export default ProjectList
-
-{/* <p id="sdate_edate">{el.start_date} to {el.end_date}</p> */}

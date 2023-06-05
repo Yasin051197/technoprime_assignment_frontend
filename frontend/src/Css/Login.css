@@ -124,6 +124,13 @@ text-align: left;
     color:rgb(243, 76, 76); 
     text-align: left;
 }
+.err1{
+    color:rgb(243, 76, 76); 
+    text-align: left;
+    margin-left: 18px;
+    font-size: 14px;
+    font-weight: 500;
+}
 #invalid{
     color:rgb(243, 76, 76) ;
     display: none;

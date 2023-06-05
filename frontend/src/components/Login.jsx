@@ -82,7 +82,7 @@ const Login = () => {
           <p >Email</p>
           <input className='input' type="email" name="email"  onChange={handleChange} />
         </div>
-        {emailerr?<p className="err">email is required</p>:<></>}
+        {emailerr?<p className="err1">email is required</p>:<></>}
         <div className='label'>
           <p >Password</p>
           <div id="password_div">

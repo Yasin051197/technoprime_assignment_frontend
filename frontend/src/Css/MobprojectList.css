@@ -1,12 +1,137 @@
 
-
-.MobPL{
+.MobPL1{
     width:90%;
     margin: auto;
-    height: 1200px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    margin-bottom: 10px;
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+}
+
+
+
+.MobPL1 div{
+    width: 50%;
+}
+
+#sort{
+    width: 12%;
+    font-size: 16px;
+    border: none;
+    margin-right: 12%;
+    outline: none;
+}
+#sort_div{
+    justify-content: right;
     border-radius: 10px;
-    margin-top: 120px;
+}
+#filter_div{
+    text-align: left;
+    border-radius: 10px;
+}
+#filter_div input{
+    width: 60%;
+    height: 60%;
+    margin-top: 1%;
+    font-size: 18px;
+    outline: none;
+    border:none;
+    margin-left: 1%;
+    border-bottom: 1px solid gray;
+}
+#filter_svg{
+    margin-left: 3%;
+}
+#cancle_fil{
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: white;
+}
+
+#filter_div svg,#filter_div input{
+    margin-left: 10px;
+}
+.MobPL2{
+    width:90%;
+    margin: auto;
+    height: auto;
     margin-bottom: 200px;
     padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap:1%
+}
+.MobPL2_child{
+    width: 100%;
+    height: auto;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    background-color: white;
+    border-radius: 10px;
+}
+#MobPL_child1{
+    display: flex;
+    height: auto;
+    margin-top: 5px;
+    justify-content: space-around;
+}
+#MobPL_child1:nth-child(1){
+    text-align: left;
+}
+
+.MobPL_child1_p{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: -10px;
+}
+.MobPL_child1_sec_p{
+    font-size: 14px;
+    font-weight: 500;
+}
+#MobPL_child2{
+    text-align: left;
+}
+#MobPL_child2 p{
+    margin-left: 30px;
+    margin-top: -2px;
+}
+
+#MobPL_child3{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+#MobPL_child3 div{
+    width: 23%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+#MobPL_child3 div button{
+    width: 100%;
+    height: 30px;
+}
+
+#sta{
+    color: white;
+    background-color:#2e65c2 ;
+    border: 1px solid #2e65c2;
+    width:100%;
+    height: 25px;
+    border-radius: 30px;
+}
+#clo{
+    width:100%;
+    color: #2e65c2;
+    border: 1px solid #2e65c2;
+    height: 25px;
+    border-radius: 30px;
+}
+#canc{
+    width:100%;
+    color: #2e65c2;
+    border: 1px solid #2e65c2;
+    height: 25px;
+    border-radius: 30px;
 }

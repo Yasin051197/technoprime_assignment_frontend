@@ -4,7 +4,6 @@
     height: auto;
     position: absolute;
     z-index: 1;
- 
     top:16%;
     left: 10%;
     border-radius: 10px;
@@ -14,8 +13,19 @@
     width: 100%;
     background-color: black;
     height: auto;
+    display: block;
 }
-
+#Mob_project_list{
+    display: none;
+}
+@media only screen and (max-width: 600px) {
+    #Mob_project_list{
+        display: block;
+    }
+    #project_list{
+        display: none;
+    }
+}
 #project_list_container{
     width: 90%;
     margin: auto;
