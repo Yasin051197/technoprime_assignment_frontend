@@ -1,7 +1,7 @@
 #create_project{
     width: 83%;
     background-color: white;
-    height: 850px;
+    height: auto;
     position: absolute;
     z-index: 1;
  
@@ -13,13 +13,13 @@
 #project_list{
     width: 100%;
     background-color: black;
-    height: 1000px;
+    height: auto;
 }
 
 #project_list_container{
     width: 90%;
     margin: auto;
-    height: 1000px;
+    height: 1150px;
     background-color: rgb(239, 244, 248);
 
 }
@@ -131,4 +131,19 @@ table {
 .trRow {
     border-bottom: 1px solid gray;
     height: 80px;
+}
+#pagination{
+    width: 20%;
+    margin: auto;
+    margin-top: 2%;
+}
+#pagination button{
+    margin-left: 20px;
+    padding: 2px 15px;
+    font-size: 16px;
+    font-weight: 500;
+}
+#pagination button:nth-child(2){
+    border: none;
+    background-color: white;
 }

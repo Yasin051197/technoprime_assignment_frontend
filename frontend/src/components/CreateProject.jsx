@@ -3,6 +3,8 @@ import Sidebar from './Sidebar'
 import "../Css/Createproject.css"
 import HeaderCreateP from './HeaderCreateP'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import MobCeateProject from './MobCeateProject'
 
 const CreateProject = () => {
   const initial={
@@ -30,6 +32,7 @@ const CreateProject = () => {
   const [location,setLocation]=useState(false)
   const [checkdate,setCheckdate]=useState("")
   const [checksdate,setChecksdate]=useState("")
+  const navigate=useNavigate()
     const pathname=window.location.pathname;
 
 
@@ -47,9 +50,20 @@ const CreateProject = () => {
       if(e.target.name==="start_date"){
         let d=e.target.value
         let arr=d.split("-").map(Number)
-        arr[2]=arr[2]+1
-        let cdate=arr.join("-0")
-        setCheckdate(cdate)
+        arr[2]=arr[2]+1;
+        let cdate=arr.join("-")
+        let rarr=cdate.split("-").map(Number)
+        for(let i=0;i<rarr.length;i++){
+          if(rarr[i]>9){
+            continue
+          }
+          else{
+            rarr[i]="0"+rarr[i]
+          }
+        }
+        let a=rarr.join("-")
+        
+        setCheckdate(a)
       }
     }
     const handlesubmit=async(e)=>{
@@ -118,10 +132,12 @@ const CreateProject = () => {
       if(project.theme!=="" && project.reason!=="" && project.type!=="" && project.division!=="" && project.category!=="" && project.start_date!=="" && project.end_date!=="" && project.priority!=="" && project.department!=="" && project.location!==""){
           let res=await axios.post("http://localhost:8080/createproject",project)
           alert(res.data.msg)
+          setTimeout(()=>navigate("/projectlist"),1000)
       }
     }
       
   return (
+    <>
     <div id="create_project_project">
         <div id="create_project_project_container">  
         <div id="Dashboard_container">
@@ -198,8 +214,10 @@ const CreateProject = () => {
                       <option value="">Department</option>
                       <option value="Statergy">Statergy</option>
                       <option value="Finance">Finance</option>
+                      <option value="Qaulity">Qaulity</option>
                       <option value="Maintenance">Maintenance</option>
                       <option value="Stores">Stores</option>
+                      <option value="HR">HR</option>
                      </select>
                      {department?<p className='input_error'>Project Department required</p>:<></>}
                 </div>
@@ -233,6 +251,8 @@ const CreateProject = () => {
     </div>
     </div>
     </div>
+    <MobCeateProject />
+    </>
   )
 }
 

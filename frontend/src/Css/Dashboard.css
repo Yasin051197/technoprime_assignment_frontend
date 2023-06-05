@@ -33,9 +33,7 @@
     margin-top: 50%;
     
 }
-/* .child1_child1_div:nth-child(2){
-    border-bottom: 1px solid gray;
-} */
+
 
 
 #child2{
@@ -134,4 +132,5 @@
     margin-left: 25px;
     height: 395px;
     background-color: white;
+    padding: 20px;
 }

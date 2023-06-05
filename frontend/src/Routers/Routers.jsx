@@ -6,6 +6,7 @@ import ProjectList from '../components/ProjectList';
 import CreateProject from '../components/CreateProject';
 import PrivateRouter from '../components/PrivateRouter';
 
+
 const Routers = () => {
   return (
     <div>
@@ -14,7 +15,7 @@ const Routers = () => {
            <Route path="/" element={<Login />} />
            <Route path="/dashboard" element={<PrivateRouter><Dashboard /></PrivateRouter>}/>
            <Route path="/projectlist" element={<PrivateRouter><ProjectList /></PrivateRouter>}/>
-           <Route path="/createproject" element={<PrivateRouter><CreateProject /></PrivateRouter>}/>
+           <Route id="create_p_lap" path="/createproject" element={<PrivateRouter><CreateProject /></PrivateRouter>}/>
         </Routes>
         </BrowserRouter>
     </div>

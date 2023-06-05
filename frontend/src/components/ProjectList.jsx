@@ -3,65 +3,103 @@ import Sidebar from './Sidebar'
 import HeaderProjectL from './HeaderProjectL'
 import axios from 'axios'
 
-const getData=async()=>{
-  return await axios.get("http://localhost:8080/projects")
+const getData=async(page)=>{
+  return await axios.get(`http://localhost:8080/projects?limit=10&page=${page}`)
 }
 
 const ProjectList = () => {
     const pathname=window.location.pathname
     const [can,setCan]=useState(false)
     const [data,setData]=useState([])
-    const [sdata,setSdata]=useState("")
+    const [page,setPage]=useState(1)
 
     useEffect(()=>{
-      getData().then((res)=>setData(res.data))
-    },[])
+      getData(page).then((res)=>setData(res.data))
+    },[page])
+
     const handlesort=(e)=>{
       let s=e.target.value
-      console.log(s)
       if(s==="priority"){
         let high=data.filter((el)=>{
-          return el.priority="high"
+          return el.priority==="high"
         })
         let medium=data.filter((el)=>{
-          return el.priority="medium"
+          return el.priority==="medium"
         })
         let low=data.filter((el)=>{
-          return el.priority="low"
+          return el.priority==="low"
         })
         setData([...high,...medium,...low])
       }
+      if(s==="status"){
+        let registered=data.filter((el)=>{
+          return el.status==="Registered"
+        })
+        let running=data.filter((el)=>{
+          return el.status==="Running"
+        })
+        let closed=data.filter((el)=>{
+          return el.status==="Closed"
+        })
+        let cancled=data.filter((el)=>{
+          return el.status==="Cancled"
+        })
+        setData([...registered,...running,...closed,...cancled])
+      }
+
+      if(s==="end_date"){
+        let end=data.filter((el)=>el.end_date) .sort((a, b) => new Date(a.end_date) - new Date(b.end_date));
+        setData([...end])
+      }
+      if(s==="start_date"){
+        let start=data.filter((el)=>el.start_date) .sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
+        setData([...start])
+      }
     }
+    
 
 
     const handlefiltercancle=(e)=>{
       setCan(true)
       let a=e.target.value
-      const filteredarr=data.filter(obj=>{
-        return Object.values(obj).some(value=>{
-          if(typeof value==="string"){
-            return value.includes(a)
-          }
-          return false
+      if(a){
+        const filteredarr=data.filter(obj=>{
+          return Object.values(obj).some(value=>{
+            if(typeof value==="string"){
+              return value.includes(a)
+            }
+            return false
+          })
         })
-      })
-      setData(filteredarr)
+        setData(filteredarr)
+      }
+      else{
+        getData().then((res)=>setData(res.data))
+      }
     }
+
     const handlecancle=()=>{
       setCan(false)
       document.getElementById("filter_input").value=""
     }
-    const handleStart=async(id)=>{
+    const handleStart=async(id,page)=>{
       
-      return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Running"}).then(()=>getData().then((res)=>setData(res.data)))
+      return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Running"}).then(()=>getData(page).then((res)=>setData(res.data)))
     }
-    const handleClose=async(id)=>{
+    const handleClose=async(id,page)=>{
       
-      return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Closed"}).then(()=>getData().then((res)=>setData(res.data)))
+      return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Closed"}).then(()=>getData(page).then((res)=>setData(res.data)))
     }
-    const handleCancle=async(id)=>{
+    const handleCancle=async(id,page)=>{
       
-      return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Cancelled"}).then(()=>getData().then((res)=>setData(res.data)))
+      return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Cancelled"}).then(()=>getData(page).then((res)=>setData(res.data)))
+    }
+
+    const handleDec=()=>{
+      setPage((prev)=>prev-1)
+    }
+    const handleInc=()=>{
+      setPage((prev)=>prev+1)
     }
   return (
     <div id="project_list">
@@ -82,7 +120,6 @@ const ProjectList = () => {
                   <select onChange={handlesort} name="sort" id="sort">
                   <option value="">Sort</option>
                   <option value="priority">Priority</option>
-                  {/* <option value="Recently Modified">Recently Modified</option> */}
                   <option value="status">Status</option>
                   <option value="start_date">State Date</option>
                   <option value="end_date">End Date</option>
@@ -91,37 +128,42 @@ const ProjectList = () => {
               </div>
               <div id="table_div">
               <table>
-  <tr id="table_first_row">
-    <th>Project Name</th>
-    <th>Reason</th>
-    <th>Type</th>
-    <th>Division</th>
-    <th>Category</th>
-    <th>Priority</th>
-    <th>Dept.</th>
-    <th>Location</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  {data.map((el)=>(
-  <tr className='trRow' key={el._id}>
-    <td id="them_date">{el.theme}{<br/>}{`${el.start_date} to ${el.end_date}`}</td>
-    <td>{el.reason}</td>
-    <td>{el.type}</td>
-    <td>{el.division}</td>
-    <td>{el.category}</td>
-    <td>{el.priority}</td>
-    <td>{el.department}</td>
-    <td>{el.location}</td>
-    <td>{el.status}</td>
-    <td><button onClick={()=>handleStart(el._id)} id="start">Start</button></td>
-    <td><button onClick={()=>handleClose(el._id)} id="close">Close</button></td>
-    <td><button onClick={()=>handleCancle(el._id)} id="cancle">Cancle</button></td>
-  </tr>
-  ))}
-</table>
+                 <tr id="table_first_row">
+                  <th>Project Name</th>
+                  <th>Reason</th>
+                  <th>Type</th>
+                  <th>Division</th>
+                  <th>Category</th>
+                  <th>Priority</th>
+                  <th>Dept.</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                {data.map((el)=>(
+                  <tr className='trRow' key={el._id}>
+                    <td id="them_date">{el.theme}{<br/>}{`${el.start_date} to ${el.end_date}`}</td>
+                    <td>{el.reason}</td>
+                    <td>{el.type}</td>
+                    <td>{el.division}</td>
+                    <td>{el.category}</td>
+                    <td>{el.priority}</td>
+                    <td>{el.department}</td>
+                    <td>{el.location}</td>
+                    <td>{el.status}</td>
+                    <td><button onClick={()=>handleStart(el._id,page)} id="start">Start</button></td>
+                    <td><button onClick={()=>handleClose(el._id,[page])} id="close">Close</button></td>
+                    <td><button onClick={()=>handleCancle(el._id,page)} id="cancle">Cancle</button></td>
+                  </tr>
+                ))}
+              </table>
+              </div>
+              <div id="pagination">
+                <button disabled={page===1} onClick={handleDec}>-</button>
+                <button>{page}</button>
+                <button onClick={handleInc}>+</button>
               </div>
             </div>
         </div>
