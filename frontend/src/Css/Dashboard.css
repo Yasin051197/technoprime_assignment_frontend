@@ -1,3 +1,18 @@
+#Dashboard_page{
+    display: block;
+}
+#Mob_dashboard_page{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    #Mob_dashboard_page{
+        display: block;
+    }
+    #Dashboard_page{
+        display: none;
+    }
+}
 #Dashboard_container{
     display: flex;
     width: 100%;

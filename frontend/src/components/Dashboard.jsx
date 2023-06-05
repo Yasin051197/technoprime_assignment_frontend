@@ -5,6 +5,7 @@ import Header from './Header'
 import axios from 'axios'
 import {Chart as ChartJS,BarElement,CategoryScale,LinearScale,Tooltip,Legend} from "chart.js"
 import {Bar} from "react-chartjs-2"
+import MobDashboard from './MobDashboard'
 
 ChartJS.register(
   BarElement,CategoryScale,LinearScale,Tooltip,Legend
@@ -43,7 +44,9 @@ const Dashboard = () => {
 
 
   return (
-    <div id="Dashboard_container">
+    <>
+    <div id="Dashboard_page">
+      <div id="Dashboard_container">
       <Sidebar pathname={pathname} />
       <div id="child2">
          <Header />
@@ -94,6 +97,11 @@ const Dashboard = () => {
          </div>
       </div>
     </div>
+    </div>
+    <div id="Mob_dashboard_page">
+      <MobDashboard />
+    </div>
+    </>
   )
 }
 
