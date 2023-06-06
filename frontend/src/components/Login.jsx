@@ -46,7 +46,7 @@ const Login = () => {
           setPasserr(false)
          }
         if(user.email!=="" && user.password!==""){
-          let res=await axios.post("http://localhost:8080/login",user)
+          let res=await axios.post("https://techprimelab-assignment-server.onrender.com/login",user)
           console.log(res.data)
           if(res.data.msg==="Invalid User")
           {

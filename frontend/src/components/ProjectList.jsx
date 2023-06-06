@@ -5,7 +5,7 @@ import axios from 'axios'
 import MobProjectList from './MobProjectList'
 
 const getData=async(page)=>{
-  return await axios.get(`http://localhost:8080/projects?limit=10&page=${page}`)
+  return await axios.get(`https://techprimelab-assignment-server.onrender.com/projects?limit=10&page=${page}`)
 }
 
 const ProjectList = () => {
@@ -86,15 +86,15 @@ const ProjectList = () => {
     }
     const handleStart=async(id,page)=>{
       
-      return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Running"}).then(()=>getData(page).then((res)=>setData(res.data)))
+      return await axios.put(`https://techprimelab-assignment-server.onrender.com/projects/${id}`,{status:"Running"}).then(()=>getData(page).then((res)=>setData(res.data)))
     }
     const handleClose=async(id,page)=>{
       
-      return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Closed"}).then(()=>getData(page).then((res)=>setData(res.data)))
+      return await axios.put(`https://techprimelab-assignment-server.onrender.com/projects/${id}`,{status:"Closed"}).then(()=>getData(page).then((res)=>setData(res.data)))
     }
     const handleCancle=async(id,page)=>{
       
-      return await axios.put(`http://localhost:8080/projects/${id}`,{status:"Cancelled"}).then(()=>getData(page).then((res)=>setData(res.data)))
+      return await axios.put(`https://techprimelab-assignment-server.onrender.com/projects/${id}`,{status:"Cancelled"}).then(()=>getData(page).then((res)=>setData(res.data)))
     }
 
     const handleDec=()=>{

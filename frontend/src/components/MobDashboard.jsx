@@ -12,7 +12,7 @@ ChartJS.register(
 
 
 const getCounts=async()=>{
-  return await axios.get("http://localhost:8080/projectsCounts")
+  return await axios.get("https://techprimelab-assignment-server.onrender.com/projectsCounts")
 }
 
 
