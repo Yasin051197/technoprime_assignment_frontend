@@ -52,9 +52,9 @@ const Dashboard = () => {
          <Header />
          <div id="dhashboard_info">
           <div className='dhashboard_info_child' >
-            <div className='dhashboard_info_one'>
-            </div>
-            <div className='dhashboard_info_two'>
+             <div className='dhashboard_info_one'>
+             </div>
+             <div className='dhashboard_info_two'>
                 <p className="title">Total Projects</p>
                 <p className="num">{count.count}</p>
             </div>
@@ -92,6 +92,7 @@ const Dashboard = () => {
          <div id="chart">
             <Bar
             data={data}
+            width={'250px'}
             >
             </Bar>
          </div>

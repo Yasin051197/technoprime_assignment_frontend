@@ -13,7 +13,6 @@ const getData=async()=>{
 const MobProjectList = () => {
     const [can,setCan]=useState(false)
     const [data,setData]=useState([])
-    const [page,setPage]=useState(1)
 
     useEffect(()=>{
       getData().then((res)=>setData(res.data))
@@ -82,7 +81,8 @@ const MobProjectList = () => {
 
     const handlecancle=()=>{
       setCan(false)
-      document.getElementById("filter_input").value=""
+      document.getElementById("search_input").value=""
+      getData().then((res)=>setData(res.data))
     }
     const handleStart=async(id)=>{
       
@@ -104,8 +104,8 @@ const MobProjectList = () => {
         <div className="MobPL1">
                 <div id="filter_div">
                   <svg id="filter_svg" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
-                  <input style={{backgroundColor:" rgb(239, 244, 248)"}} onChange={handlefiltercancle} type="text" id="filter_input" placeholder='Search' />
-                  {can?<button id="cancle_fil" onClick={handlecancle}>X</button>:<></>}
+                  <input style={{backgroundColor:" rgb(239, 244, 248)"}} onChange={handlefiltercancle} type="text" id="search_input" placeholder='Search' />
+                  {can?<button style={{backgroundColor:" rgb(239, 244, 248)"}} id="cancle_fil" onClick={handlecancle}>X</button>:<></>}
                 </div>
                 <div style={{backgroundColor:" rgb(239, 244, 248)"}} id="sort_div">
                   <select style={{backgroundColor:" rgb(239, 244, 248)"}} onChange={handlesort} name="sort" id="sort">
@@ -137,9 +137,9 @@ const MobProjectList = () => {
                 <p>Priority: {el.priority}</p>
               </div>
               <div id="MobPL_child3">
-                    <div><button onClick={()=>handleStart(el._id,page)} id="sta">Start</button></div>
-                    <div><button onClick={()=>handleClose(el._id,page)} id="clo">Close</button></div>
-                    <div><button onClick={()=>handleCancle(el._id,page)} id="canc">Cancle</button></div>
+                    <div><button onClick={()=>handleStart(el._id)} id="sta">Start</button></div>
+                    <div><button onClick={()=>handleClose(el._id)} id="clo">Close</button></div>
+                    <div><button onClick={()=>handleCancle(el._id)} id="canc">Cancle</button></div>
               </div>
               </div>
           ))}

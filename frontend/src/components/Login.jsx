@@ -76,14 +76,14 @@ const Login = () => {
         <p >Online Project Management</p>
        </div>
        <div id="login">
-       <form onSubmit={handlesubmit}>
-        <p id="login_title">Login to get started</p>
-        <div className='label'>
+         <form onSubmit={handlesubmit}>
+          <p id="login_title">Login to get started</p>
+          <div className='label'>
           <p >Email</p>
           <input className='input' type="email" name="email"  onChange={handleChange} />
-        </div>
-        {emailerr?<p className="err1">email is required</p>:<></>}
-        <div className='label'>
+          </div>
+          {emailerr?<p className="err1">email is required</p>:<></>}
+          <div className='label'>
           <p >Password</p>
           <div id="password_div">
           <input className='pass' type={showP ? 'text' : 'password'} name="password" onChange={handleChange} /> 

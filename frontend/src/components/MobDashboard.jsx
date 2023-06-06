@@ -44,7 +44,43 @@ const MobDashboard = () => {
         <NavAndFootbar />
         <div style={{backgroundColor:" rgb(239, 244, 248)"}}>
         <div id="Mobdashboard" >
-            <div id="Mobdashboard_child1"></div>
+            <div id="Mobdashboard_child1">
+                    <div className='Mobdashboard_child1_child_first' >
+                       <div className='Mobdashboard_child1_one'></div>
+                       <div className='Mobdashboard_child1_two'>
+                        <p className="Mobdashboard_child1_two_title">Total Projects</p>
+                        <p className="Mobdashboard_child1_two_num">{count.count}</p>
+                       </div>
+                    </div>
+                    <div className='Mobdashboard_child1_child' >
+                       <div className='Mobdashboard_child1_one'></div>
+                       <div className='Mobdashboard_child1_two'>
+                        <p className="Mobdashboard_child1_two_title">Closed</p>
+                        <p className="Mobdashboard_child1_two_num">{count.closedcount}</p>
+                       </div>
+                    </div>
+                    <div className='Mobdashboard_child1_child' >
+                       <div className='Mobdashboard_child1_one'></div>
+                       <div className='Mobdashboard_child1_two'>
+                        <p className="Mobdashboard_child1_two_title">Running</p>
+                        <p className="Mobdashboard_child1_two_num">{count.runningcount}</p>
+                       </div>
+                    </div>
+                    <div className='Mobdashboard_child1_child' >
+                       <div className='Mobdashboard_child1_one'></div>
+                       <div className='Mobdashboard_child1_two'>
+                        <p className="Mobdashboard_child1_two_title">Clousre Delay</p>
+                        <p className="Mobdashboard_child1_two_num">{count.clousercount}</p>
+                       </div>
+                    </div>
+                    <div className='Mobdashboard_child1_child' >
+                       <div className='Mobdashboard_child1_one'></div>
+                       <div className='Mobdashboard_child1_two'>
+                        <p className="Mobdashboard_child1_two_title">Cancelled</p>
+                        <p className="Mobdashboard_child1_two_num">{count.cancledcount}</p>
+                       </div>
+                    </div>
+            </div>
             <div id="Mobdashboard_child2"><p>Department wise - Total Vs Closed</p></div>
             <div id="Mobdashboard_child3">
             <Bar

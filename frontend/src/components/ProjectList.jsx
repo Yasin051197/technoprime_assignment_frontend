@@ -82,6 +82,7 @@ const ProjectList = () => {
     const handlecancle=()=>{
       setCan(false)
       document.getElementById("filter_input").value=""
+      getData().then((res)=>setData(res.data))
     }
     const handleStart=async(id,page)=>{
       

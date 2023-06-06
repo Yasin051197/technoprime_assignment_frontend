@@ -151,7 +151,7 @@ const MobCeateProject = () => {
                       <option value="Dealership">For Dealership</option>
                       <option value="Tranport">For Tranport</option>
                      </select>
-                     {reason?<p className='input_error'>Project theme required</p>:<></>}
+                     {reason?<p className='input_error'>Project reason required</p>:<></>}
                 </div>
                 <div className='Mobcreatep_child2'>
                      <p >Type</p>
