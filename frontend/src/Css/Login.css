@@ -144,7 +144,7 @@ text-align: left;
     }
     #logo_img1{
         left: 25%;
-        top:16%;
+        top:12%;
     }
     #login_title{
         margin-left: 18px;
@@ -160,6 +160,7 @@ text-align: left;
         position: static;
         box-shadow:none;
         padding: none;
+        margin-bottom: 40px;
     }
     #login_title{
         font-size: 18px;
@@ -180,7 +181,7 @@ text-align: left;
     #banner_img_small{
         width: 100%;
         display: block;
-        height: 440px;
+        height: 380px;
         margin-bottom: 1px;
     }
     #submit{
