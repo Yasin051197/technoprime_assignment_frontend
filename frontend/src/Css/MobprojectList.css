@@ -55,13 +55,13 @@
 }
 .MobPL2{
     width:90%;
-    margin: auto;
     height: auto;
-    margin-bottom: 200px;
-    padding-bottom: 20px;
     display: grid;
     grid-template-columns: repeat(1,1fr);
-    gap:1%
+    gap:1%;
+    margin: auto;
+    padding-bottom: 20px;
+    border: 1px solid red;
 }
 .MobPL2_child{
     width: 100%;
@@ -69,7 +69,9 @@
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     background-color: white;
     border-radius: 10px;
+    margin-bottom: 30px;
 }
+
 #MobPL_child1{
     display: flex;
     height: auto;
@@ -81,8 +83,8 @@
 }
 
 .MobPL_child1_p{
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: -10px;
 }
 .MobPL_child1_sec_p{

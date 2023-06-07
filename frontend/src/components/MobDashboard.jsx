@@ -85,7 +85,7 @@ const MobDashboard = () => {
             <div id="Mobdashboard_child3">
             <Bar
               data={data}
-              width={"100%"}
+              width={"120px"}
              >
             </Bar>
             </div>

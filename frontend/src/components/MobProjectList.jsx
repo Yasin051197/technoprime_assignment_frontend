@@ -98,9 +98,9 @@ const MobProjectList = () => {
     }
 
   return (
-    <div style={{backgroundColor:" rgb(239, 244, 248)"}}  >
+    <div style={{backgroundColor:" rgb(239, 244, 248)",marginBottom:"100px"}}  >
       <NavAndFootbar />
-      <div style={{backgroundColor:" rgb(239, 244, 248)"}} >
+      <div  style={{width:"90%",height:"auto",margin:"auto",paddingBottom:"100px"}} >
         <div className="MobPL1">
                 <div id="filter_div">
                   <svg id="filter_svg" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
@@ -117,7 +117,7 @@ const MobProjectList = () => {
                   </select>
                 </div>
         </div>
-        <div className="MobPL2">
+        {/* <div className="MobPL2"> */}
           {data.map((el)=>(
             <div className='MobPL2_child' key={el._id}>
               <div id="MobPL_child1">
@@ -143,7 +143,7 @@ const MobProjectList = () => {
               </div>
               </div>
           ))}
-        </div>
+        {/* </div> */}
     </div>
     <Footer />
     </div>
