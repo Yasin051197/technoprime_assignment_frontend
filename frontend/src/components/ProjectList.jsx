@@ -66,10 +66,7 @@ const ProjectList = () => {
       if(a){
         const filteredarr=data.filter(obj=>{
           return Object.values(obj).some(value=>{
-            if(typeof value==="string"){
-              return value.includes(a)
-            }
-            return false
+            return value.includes(a)
           })
         })
         setData(filteredarr)
