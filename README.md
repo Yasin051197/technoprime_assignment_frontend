@@ -4,3 +4,19 @@ It is an assignment of Techprime for laptop and mobile screen.
 deployment link(netlify)- https://techprimeassignmentone.netlify.app/
 <br/>
 Server Github Link-https://github.com/Yasin051197/techprimelab_assignment_server
+<br/>
+you can access the project with this credentials 
+<br/>
+email - yas@gmail.com
+<br/>
+pass- Yasin@1234
+<br/>
+email - juned@gmail.com
+<br/>
+pass - Juned@1234
+<br/>
+email - kiran.gosavi@techprimelab.com
+<br/>
+pass - mypass321
+<br/>
+u can use any one in these credentials to log in 
