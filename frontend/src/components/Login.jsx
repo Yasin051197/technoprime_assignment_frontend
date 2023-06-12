@@ -48,14 +48,14 @@ const Login = () => {
         if(user.email!=="" && user.password!==""){
           let res=await axios.post("https://techprimelab-assignment-server.onrender.com/login",user)
           console.log(res.data)
-          if(res.data.msg==="Invalid User")
+          if(res.data.Message==="Invalid Response")
           {
             setinvalid(true)
           }
-          else if(res.data.msg==="Valid User"){
+          else if(res.data.Message==="Valid Response"){
             setinvalid(false)
-            login(res.data.msg)
-            localStorage.setItem("msg",res.data.msg)
+            login(res.data.Message)
+            localStorage.setItem("msg",res.data.Message)
             setTimeout(()=>navigate("/dashboard"),1000)
           }
         }

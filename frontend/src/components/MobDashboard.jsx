@@ -11,30 +11,63 @@ ChartJS.register(
 )
 
 
-const getCounts=async()=>{
-  return await axios.get("https://techprimelab-assignment-server.onrender.com/projectsCounts")
-}
 
 
-const MobDashboard = () => {
-    const [count,setCount]=useState({count:0,closedcount:0,runningcount:0,runningcount:0,clousercount:0,cancledcount:0,  strcount:0,strclosedcount:0,fincount:0,finclosedcount:0,qltcount:0,qltclosedcount:0,mancount:0,manclosedcount:0,stocount:0,stoclosedcount:0,hrcount:0,hrclosedcount:0})
+
+const MobDashboard = ({getCounts}) => {
+  const [count,setCount]=useState(0)
+  const [Closed,setClosed]=useState([])
+  const [Total,setTotal]=useState([])
+  const [clouser,setClouser]=useState(0)
+  const [Data,setData]=useState([])
+
   useEffect(()=>{
-    getCounts().then((res)=>setCount(res.data))
+    getCounts().then((res)=>
+    {
+      setTotal(res.data.Totaldata)
+      setClosed(res.data.Closeddata)
+      setClouser(res.data.clousercount)
+      setCount(res.data.count)
+      setData(res.data.data)
+    })
   },[])
  
+let cancelledRec,closedRec,runningRec,registorRec;
+for(let i=0;i<Data.length;i++){
+  cancelledRec=Data[0].count
+  closedRec=Data[1].count
+  registorRec=Data[2].count
+  runningRec=Data[3].count
+}
+  
+let str1,str2,fin1,fin2,qlt1,qlt2,man1,man2,sto1,sto2,hr1,hr2;
+for(let i=0;i<Closed.length;i++){
+  str1=Closed[4].closedCount
+  str2=Total[4].totalCount
+  fin1=Closed[0].closedCount
+  fin2=Total[0].totalCount
+  qlt1=Closed[3].closedCount
+  qlt2=Total[3].totalCount
+  man1=Closed[2].closedCount
+  man2=Total[2].totalCount
+  sto1=Closed[5].closedCount
+  sto2=Total[5].totalCount
+  hr1=Closed[1].closedCount
+  hr2=Total[1].totalCount
+}
 
   const data={
     
-    labels:[[Math.floor((count.strclosedcount/count.strcount)*100)+"%"," ","STR"],[Math.floor((count.finclosedcount/count.fincount)*100)+"%"," ",'FIN'],[Math.floor((count.qltclosedcount/count.qltcount)*100)+"%"," ",'QLT'],[Math.floor((count.manclosedcount/count.mancount)*100)+"%"," ",'MAN'],[Math.floor((count.stoclosedcount/count.stocount)*100)+"%"," ",'STO'],[Math.floor((count.hrclosedcount/count.hrcount)*100)+"%"," ",'HR']],
+    labels:[[Math.floor((str1/str2)*100)+"%"," ","STR"],[Math.floor((fin1/fin2)*100)+"%"," ",'FIN'],[Math.floor((qlt1/qlt2)*100)+"%"," ",'QLT'],[Math.floor((man1/man2)*100)+"%"," ",'MAN'],[Math.floor((sto1/sto2)*100)+"%"," ",'STO'],[Math.floor((hr1/hr2)*100)+"%"," ",'HR']],
     datasets:[{
       label:'Total',
-      data:[count.strcount,count.fincount,count.qltcount,count.mancount,count.stocount,count.hrcount],
+      data:[str2,fin2,qlt2,man2,sto2,hr2],
       backgroundColor:'blue',
       borderRadius:10
     },
     {
       label:'Closed',
-      data:[count.strclosedcount,count.finclosedcount,count.qltclosedcount,count.manclosedcount,count.stoclosedcount,count.hrclosedcount],
+      data:[str1,fin1,qlt1,man1,sto1,hr1],
       backgroundColor:'green',
       borderRadius:10
     }]
@@ -49,35 +82,35 @@ const MobDashboard = () => {
                        <div className='Mobdashboard_child1_one'></div>
                        <div className='Mobdashboard_child1_two'>
                         <p className="Mobdashboard_child1_two_title">Total Projects</p>
-                        <p className="Mobdashboard_child1_two_num">{count.count}</p>
+                        <p className="Mobdashboard_child1_two_num">{count}</p>
                        </div>
                     </div>
                     <div className='Mobdashboard_child1_child' >
                        <div className='Mobdashboard_child1_one'></div>
                        <div className='Mobdashboard_child1_two'>
                         <p className="Mobdashboard_child1_two_title">Closed</p>
-                        <p className="Mobdashboard_child1_two_num">{count.closedcount}</p>
+                        <p className="Mobdashboard_child1_two_num">{closedRec}</p>
                        </div>
                     </div>
                     <div className='Mobdashboard_child1_child' >
                        <div className='Mobdashboard_child1_one'></div>
                        <div className='Mobdashboard_child1_two'>
                         <p className="Mobdashboard_child1_two_title">Running</p>
-                        <p className="Mobdashboard_child1_two_num">{count.runningcount}</p>
+                        <p className="Mobdashboard_child1_two_num">{runningRec}</p>
                        </div>
                     </div>
                     <div className='Mobdashboard_child1_child' >
                        <div className='Mobdashboard_child1_one'></div>
                        <div className='Mobdashboard_child1_two'>
                         <p className="Mobdashboard_child1_two_title">Clousre Delay</p>
-                        <p className="Mobdashboard_child1_two_num">{count.clousercount}</p>
+                        <p className="Mobdashboard_child1_two_num">{clouser}</p>
                        </div>
                     </div>
                     <div className='Mobdashboard_child1_child' >
                        <div className='Mobdashboard_child1_one'></div>
                        <div className='Mobdashboard_child1_two'>
                         <p className="Mobdashboard_child1_two_title">Cancelled</p>
-                        <p className="Mobdashboard_child1_two_num">{count.cancledcount}</p>
+                        <p className="Mobdashboard_child1_two_num">{cancelledRec}</p>
                        </div>
                     </div>
             </div>

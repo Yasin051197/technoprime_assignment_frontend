@@ -109,7 +109,14 @@ const CreateProject = () => {
         setEdate(true)
       }
       else{
-        setEdate(false)
+        const startDate = new Date(project.start_date);
+        const endDate = new Date(project.end_date);
+        if(startDate<endDate){
+          setEdate(false)
+        }
+        else{
+          setEdate(true)
+        }
       }
       if(project.priority===""){
         setPriority(true)
