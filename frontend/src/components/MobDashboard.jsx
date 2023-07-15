@@ -40,34 +40,34 @@ for(let i=0;i<Data.length;i++){
   runningRec=Data[3].count
 }
   
-let str1,str2,fin1,fin2,qlt1,qlt2,man1,man2,sto1,sto2,hr1,hr2;
-for(let i=0;i<Closed.length;i++){
-  str1=Closed[4].closedCount
-  str2=Total[4].totalCount
-  fin1=Closed[0].closedCount
-  fin2=Total[0].totalCount
-  qlt1=Closed[3].closedCount
-  qlt2=Total[3].totalCount
-  man1=Closed[2].closedCount
-  man2=Total[2].totalCount
-  sto1=Closed[5].closedCount
-  sto2=Total[5].totalCount
-  hr1=Closed[1].closedCount
-  hr2=Total[1].totalCount
-}
+// let str1,str2,fin1,fin2,qlt1,qlt2,man1,man2,sto1,sto2,hr1,hr2;
+// for(let i=0;i<Closed.length;i++){
+//   str1=Closed[4].closedCount
+//   str2=Total[4].totalCount
+//   fin1=Closed[0].closedCount
+//   fin2=Total[0].totalCount
+//   qlt1=Closed[3].closedCount
+//   qlt2=Total[3].totalCount
+//   man1=Closed[2].closedCount
+//   man2=Total[2].totalCount
+//   sto1=Closed[5].closedCount
+//   sto2=Total[5].totalCount
+//   hr1=Closed[1].closedCount
+//   hr2=Total[1].totalCount
+// }
 
   const data={
     
-    labels:[[Math.floor((str1/str2)*100)+"%"," ","STR"],[Math.floor((fin1/fin2)*100)+"%"," ",'FIN'],[Math.floor((qlt1/qlt2)*100)+"%"," ",'QLT'],[Math.floor((man1/man2)*100)+"%"," ",'MAN'],[Math.floor((sto1/sto2)*100)+"%"," ",'STO'],[Math.floor((hr1/hr2)*100)+"%"," ",'HR']],
+    // labels:[[Math.floor((str1/str2)*100)+"%"," ","STR"],[Math.floor((fin1/fin2)*100)+"%"," ",'FIN'],[Math.floor((qlt1/qlt2)*100)+"%"," ",'QLT'],[Math.floor((man1/man2)*100)+"%"," ",'MAN'],[Math.floor((sto1/sto2)*100)+"%"," ",'STO'],[Math.floor((hr1/hr2)*100)+"%"," ",'HR']],
     datasets:[{
       label:'Total',
-      data:[str2,fin2,qlt2,man2,sto2,hr2],
+      // data:[str2,fin2,qlt2,man2,sto2,hr2],
       backgroundColor:'blue',
       borderRadius:10
     },
     {
       label:'Closed',
-      data:[str1,fin1,qlt1,man1,sto1,hr1],
+      // data:[str1,fin1,qlt1,man1,sto1,hr1],
       backgroundColor:'green',
       borderRadius:10
     }]

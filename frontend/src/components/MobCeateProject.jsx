@@ -130,7 +130,7 @@ const MobCeateProject = () => {
             setLocation(false)
           }
           if(project.theme!=="" && project.reason!=="" && project.type!=="" && project.division!=="" && project.category!=="" && project.start_date!=="" && project.end_date!=="" && project.priority!=="" && project.department!=="" && project.location!==""){
-              let res=await axios.post("https://techprimelab-assignment-server.onrender.com/createproject",project)
+              let res=await axios.post("http://localhost:8080/createproject",project)
               alert(res.data.msg)
               setTimeout(()=>navigate("/projectlist"),1000)
           }
