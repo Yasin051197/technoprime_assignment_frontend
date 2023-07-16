@@ -21,24 +21,15 @@ const MobDashboard = ({getCounts}) => {
   const [clouser,setClouser]=useState(0)
   const [Data,setData]=useState([])
 
-  useEffect(()=>{
-    getCounts().then((res)=>
-    {
-      setTotal(res.data.Totaldata)
-      setClosed(res.data.Closeddata)
-      setClouser(res.data.clousercount)
-      setCount(res.data.count)
-      setData(res.data.data)
-    })
-  },[])
+//  console.log(getCounts)
  
-let cancelledRec,closedRec,runningRec,registorRec;
-for(let i=0;i<Data.length;i++){
-  cancelledRec=Data[0].count
-  closedRec=Data[1].count
-  registorRec=Data[2].count
-  runningRec=Data[3].count
-}
+// let cancelledRec,closedRec,runningRec,registorRec;
+// for(let i=0;i<Data.length;i++){
+//   cancelledRec=Data[0].count
+//   closedRec=Data[1].count
+//   registorRec=Data[2].count
+//   runningRec=Data[3].count
+// }
   
 // let str1,str2,fin1,fin2,qlt1,qlt2,man1,man2,sto1,sto2,hr1,hr2;
 // for(let i=0;i<Closed.length;i++){
@@ -89,14 +80,14 @@ for(let i=0;i<Data.length;i++){
                        <div className='Mobdashboard_child1_one'></div>
                        <div className='Mobdashboard_child1_two'>
                         <p className="Mobdashboard_child1_two_title">Closed</p>
-                        <p className="Mobdashboard_child1_two_num">{closedRec}</p>
+                        {/* <p className="Mobdashboard_child1_two_num">{closedRec}</p> */}
                        </div>
                     </div>
                     <div className='Mobdashboard_child1_child' >
                        <div className='Mobdashboard_child1_one'></div>
                        <div className='Mobdashboard_child1_two'>
                         <p className="Mobdashboard_child1_two_title">Running</p>
-                        <p className="Mobdashboard_child1_two_num">{runningRec}</p>
+                        {/* <p className="Mobdashboard_child1_two_num">{runningRec}</p> */}
                        </div>
                     </div>
                     <div className='Mobdashboard_child1_child' >
@@ -110,7 +101,7 @@ for(let i=0;i<Data.length;i++){
                        <div className='Mobdashboard_child1_one'></div>
                        <div className='Mobdashboard_child1_two'>
                         <p className="Mobdashboard_child1_two_title">Cancelled</p>
-                        <p className="Mobdashboard_child1_two_num">{cancelledRec}</p>
+                        {/* <p className="Mobdashboard_child1_two_num">{cancelledRec}</p> */}
                        </div>
                     </div>
             </div>

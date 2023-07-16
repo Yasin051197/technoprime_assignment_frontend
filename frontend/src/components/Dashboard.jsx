@@ -13,85 +13,84 @@ ChartJS.register(
 
 
 const getCounts=async()=>{
-  return await axios.get("https://techprimelab-assignment-server.onrender.com/projectsCounts")
+  return await axios.get("http://localhost:8080/projectsCounts")
 }
 
 
 
 const Dashboard = () => {
-  const [count,setCount]=useState(0)
-  const [Closed,setClosed]=useState([])
-  const [Total,setTotal]=useState([])
+  const [Count,setCount]=useState([])
+  const [Total,setTotal]=useState(0)
+  const [Closed,setClosed]=useState(0)
   const [clouser,setClouser]=useState(0)
-  const [Data,setData]=useState([])
-  const [Cextra,setCextra]=useState(0)
-  const [Textra,setTextra]=useState(0)
+  const [Ftotal,setFtotal]=useState(0)
+  const [FClosed,setFClosed]=useState(0)
+  const [Department,setDepartment]=useState([])
+
+  const [statusData,setStatusData]=useState([])
+  const [running,setRunning]=useState(0)
+  const [cancelled,setCancelled]=useState(0)
+  
   const pathname=window.location.pathname
+  
+  let dept=["FIN","HR","MAN","QLT","STR","STO"]
+    let departments=[];
+    let totals=[]
+    let closed=[]
 
   useEffect(()=>{
-    getCounts().then((res)=>
-    {
-      setTotal(res.data.Totaldata)
-      setClosed(res.data.Closeddata)
+    getCounts().then((res)=>{
+      setCount(res.data.project)
       setClouser(res.data.clousercount)
-      setCount(res.data.count)
-      setData(res.data.data)
+      setStatusData(res.data.statusCount)
     })
   },[])
- 
-let cancelledRec,closedRec,runningRec,registorRec;
-for(let i=0;i<Data.length;i++){
-  cancelledRec=Data[0].count
-  closedRec=Data[1].count
-  registorRec=Data[2].count
-  runningRec=Data[3].count
-}
+  useEffect(()=>{
+    let Totalsum=0;
 
+    Count.forEach(item => {
+      Totalsum+=item.total
+    });
+    setTotal(Totalsum)
+    let Closedsum = 0;
 
-let str1,str2,fin1,fin2,qlt1,qlt2,man1,man2,sto1,sto2,hr1,hr2;
+    Count.forEach((item)=>{
+      Closedsum += item.closedCount;
+    })
 
-let Cel0=Closed[0]
-let Cel1=Closed[1]
-let Cel2=Closed[2]
-let Cel3=Closed[3]
-let Cel4=Closed[4]
-let Cel5=Closed[5]
-for(let i in Cel1){
-  if(i){
-    Cel0._id==="Finance"?fin1=Cel0.closedCount:fin1=0
-    Cel1._id==="HR"?hr1=Cel1.closedCount:hr1=0
-    Cel2._id==="Maintenance"?man1=Cel2.closedCount:man1=0
-    Cel3._id==="Qaulity"?qlt1=Cel3.closedCount:qlt1=0
-    Cel4._id==="Statergy"?str1=Cel4.closedCount:str1=0
-    Cel5._id==="Stores"?sto1=Cel5.closedCount:sto1=0
-  }
-  else{
-    setCextra(0)
-  }
+    setClosed(Closedsum);
+
+    Count.forEach((item)=>{
+      Closedsum += item.closedCount;
+    })
+
+    setClosed(Closedsum);
+
+    statusData.forEach((item)=>{
+      if(item._id==="Running"){
+        setRunning(item.count)
+      }else if(item._id==="Cancelled"){
+        setCancelled(item.count)
+      }
+    })
+
+    setClosed(Closedsum);
+    
+    for(let i=0;i<Count.length;i++){
   
-}
+      let per=(Count[i].closedCount/Count[i].total)*100
+      departments.push([`${per.toFixed(0)}%`," ",dept[i]])
+      totals.push(Count[i].total)
+      closed.push(Count[i].closedCount)
+    }
 
-let Tel0=Total[0]
-let Tel1=Total[1]
-let Tel2=Total[2]
-let Tel3=Total[3]
-let Tel4=Total[4]
-let Tel5=Total[5]
+    setDepartment(departments)
+    setFClosed(closed)
+    setFtotal(totals)
+    
+  },[Count,statusData])
 
-for(let i in Tel1){
-  if(i){
-    Tel0._id==="Finance"?fin2=Tel0.totalCount:fin2=0
-    Tel1._id==="HR"?hr2=Tel1.totalCount:hr1=0
-    Tel2._id==="Maintenance"?man2=Tel2.totalCount:man2=0
-    Tel3._id==="Qaulity"?qlt2=Tel3.totalCount:qlt2=0
-    Tel4._id==="Statergy"?str2=Tel4.totalCount:str2=0
-    Tel5._id==="Stores"?sto2=Tel5.totalCount:sto2=0
-  }
-  else{
-    setTextra(0)
-  }
-}
-
+ 
 
 
 
@@ -99,16 +98,16 @@ for(let i in Tel1){
 
   const data={
     
-    labels:[[Math.floor((str1?str1:Cextra/str2?str2:Textra)*100)+"%"," ","STR"],[Math.floor((fin1/fin2)*100)+"%"," ",'FIN'],[Math.floor((qlt1/qlt2)*100)+"%"," ",'QLT'],[Math.floor((man1/man2)*100)+"%"," ",'MAN'],[Math.floor((sto1/sto2)*100)+"%"," ",'STO'],[Math.floor((hr1/hr2)*100)+"%"," ",'HR']],
+    labels:Department,
     datasets:[{
       label:'Total',
-      data:[str2,fin2,qlt2,man2,sto2,hr2],
+      data:Ftotal,
       backgroundColor:'blue',
       borderRadius:10
     },
     {
       label:'Closed',
-      data:[str1,fin1,qlt1,man1,sto1,hr1],
+      data:FClosed,
       backgroundColor:'green',
       borderRadius:10
     }]
@@ -128,21 +127,21 @@ for(let i in Tel1){
              </div>
              <div className='dhashboard_info_two'>
                 <p className="title">Total Projects</p>
-                <p className="num">{count}</p>
+                <p className="num">{Total}</p>
             </div>
           </div>
           <div className='dhashboard_info_child' >
             <div className='dhashboard_info_one'></div>
             <div className='dhashboard_info_two'>
                 <p className="title">Closed</p>
-                <p className="num">{closedRec}</p>
+                <p className="num">{Closed}</p>
             </div>
           </div>
           <div className='dhashboard_info_child' >
             <div className='dhashboard_info_one'></div>
             <div className='dhashboard_info_two'>
                 <p className="title">Running</p>
-                <p className="num">{runningRec}</p>
+                <p className="num">{running}</p>
             </div>
           </div>
           <div className='dhashboard_info_child' >
@@ -156,7 +155,7 @@ for(let i in Tel1){
             <div className='dhashboard_info_one'></div>
             <div className='dhashboard_info_two'>
                 <p className="title">Cancelled</p>
-                <p className="num">{cancelledRec}</p>
+                <p className="num">{cancelled}</p>
             </div>
           </div>
          </div>
